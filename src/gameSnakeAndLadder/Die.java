@@ -6,6 +6,7 @@ package gameSnakeAndLadder;
 import java.util.Random;
 
 /**
+ * A die simulator
  * @author luis_
  *
  */

@@ -9,14 +9,9 @@ package gameSnakeAndLadder;
  */
 class BoardSquare {
 	/**
-	 * If not null, then the sqaure has a snake's head
+	 * If not null it indicates there is a snake or a ladder in the square
 	 */
-	private Snake aSnake = null;
-	
-	/**
-	 * If not null, then the square has a ladder's foot
-	 */
-	private Ladder aLadder = null;
+	private Mover mover = null;
 	
 	/**
 	 * The position of the square on the board
@@ -46,47 +41,21 @@ class BoardSquare {
 	BoardSquare(int position) {
 		setPosition(position);
 	}
-	
 	/**
-	 * Adds a ladder to the Square
-	 * @param l A ladder
+	 * Setter of the mover
+	 * @param m The mover
 	 */
-	void setLadder(Ladder l) {
-		aLadder = l;
-	}
-	
-	/**
-	 * Adds a snake to the Square
-	 * @param s A snake
-	 */
-	void setSnake(Snake s) {
-		aSnake = s;
+	public void setMover(Mover m) {
+		mover = m;
 	}
 	/**
-	 * Determines whether there is a ladder in the square
-	 * @return True if there is a ladder on it
-	 */
-	private boolean getLadder() {
-		return null != aLadder;
-	}
-	/**
-	 * Determines whether there is a snake in the square
-	 * @return True if there is a snake on it
-	 */
-	private boolean getSnake() {
-		return null != aSnake;
-	}
-	/**
-	 * Moves a player to this square and then applies a ladder or a snake if possible
+	 * Moves a player to this square and then applies a ladder or a snake if needed
 	 * @param counter The player that reaches this square 
 	 */
 	void movePlayerPiece(PlayerPiece counter) {
 		counter.setCurrentPosition(this);
-		if(getSnake()) {
-			aSnake.movePlayerPiece(counter);
-		}
-		if(getLadder()) {
-			aLadder.movePlayerPiece(counter);
+		if (mover!=null) {
+			mover.movePlayerPiece(counter);
 		}
 	}
 }

@@ -7,8 +7,7 @@ package gameSnakeAndLadder;
  * @author luis_
  * A snake. The tail of the snake indicates where a player must move after reaching the head of the snake.
  */
-class Snake {
-	
+class Snake extends Mover {
 	/**
 	 * The tail of the snake.
 	 */
@@ -36,13 +35,15 @@ class Snake {
 	 * @param tail The BoardSquare where the tail is located
 	 */	
 	Snake(BoardSquare head,BoardSquare tail) {
-		/**
-		 * 
-		 */
+		super(head, tail);
 		setTail(tail);
-		head.setSnake(this);
-	};
-	
+		head.setMover(this);
+	}
+	/**
+	 * Moves the player to the square determined by the constructor
+	 * @param counter
+	 */
+	@Override
 	void movePlayerPiece (PlayerPiece counter) {
 		counter.setCurrentPosition(getTail());
 		System.out.println("Player "+counter.getColor()+" goes down a snake to "+getTail().getPosition());

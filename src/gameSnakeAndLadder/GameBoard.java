@@ -11,7 +11,7 @@ class GameBoard {
 	private Die die;
 	
 	/**
-	 * The gameboard will have 100 squares
+	 * The game board will have 100 squares
 	 */
 	static final int MAX_SQUARES = 100;
 	/**
